@@ -96,6 +96,6 @@ task-dashboard/
 
 *  components/ — Contains all React components used in the app.
 *  types/ — Shared TypeScript types/interfaces used across components.
-* utils / - Contains helper functions like task filtering, sorting, validation, and date formatting.
+*  utils / - Contains helper functions like task filtering, sorting, validation, and date formatting.
 
 ## Reflection
