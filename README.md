@@ -76,24 +76,23 @@ npm run dev
 ##  Project Structure
 task-dashboard/
 ├── src/
-│ ├── components/
-│ │ ├── TaskList/
-│ │ │ ├── TaskList.tsx
-│ │ │ └── TaskItem.tsx
-│ │ ├── TaskForm/
-│ │ │ └── TaskForm.tsx
-│ │ ├── TaskFilter/
-│ │ │ └── TaskFilter.tsx
-│ │ └── Dashboard/
-│ │ └── Dashboard.tsx
-│ ├── types/
-│ │ └── index.ts
-│ ├── utils/
-│ │ └── taskUtils.ts
-│ ├── App.tsx
+│   ├── components/
+│   │   ├── TaskList/
+│   │   │   ├── TaskList.tsx
+│   │   │   └── TaskItem.tsx
+│   │   ├── TaskForm/
+│   │   │   └── TaskForm.tsx
+│   │   ├── TaskFilter/
+│   │   │   └── TaskFilter.tsx
+│   │   └── Dashboard/
+│   │       └── Dashboard.tsx
+│   ├── types/
+│   │   └── index.ts
+│   ├── utils/
+│   │   └── taskUtils.ts
+│   ├── App.tsx
 ├── main.tsx
 └── package.json
-
 
 *  components/ — Contains all React components used in the app.
 *  types/ — Shared TypeScript types/interfaces used across components.
