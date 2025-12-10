@@ -1,7 +1,7 @@
 export type TaskPriority = 'low' | 'medium' | 'high';
 export type TaskStatus = 'pending' | 'in-progress' | 'completed';
 
-export interface TaskForm {
+export interface TaskFormData {
     title: string;
     description: string;
     status: TaskStatus;
@@ -10,6 +10,6 @@ export interface TaskForm {
 }
 
 export interface TaskFormProps {
-    onSubmit: (task: TaskForm) => void;
-    initialData?: TaskForm;
+    onSubmit: (task: TaskFormData) => void;
+    initialData?: TaskFormData;
 }
