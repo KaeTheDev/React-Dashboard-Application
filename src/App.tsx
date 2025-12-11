@@ -34,7 +34,13 @@ function App() {
 
   return (
     <>
-      <TaskForm onSubmit={handleTaskSubmit} />
+     <div className="p-4 flex flex-col md:flex-row gap-4">
+    
+    <div className="md:w-1/2">
+    <TaskForm onSubmit={handleTaskSubmit} />
+    </div>
+ 
+      <div className="md:w-2/2 flex flex-col gap-4">
       {tasks.map((task) => (
         <TaskItem
           key={task.id}
@@ -49,6 +55,8 @@ function App() {
           }}
         />
       ))}
+      </div>
+      </div>
     </>
   );
 }
