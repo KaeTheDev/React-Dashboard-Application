@@ -31,6 +31,7 @@ This lab focuses on:
 *  React Docs — https://react.dev
 *  TypeScript Handbook — https://www.typescriptlang.org/docs
 *  React Hooks Guide — Official Documentation
+*  Local Storage in React - https://blog.logrocket.com/using-localstorage-react-hooks/
 *  TypeScript + React Cheatsheets (recommended)
 
 
