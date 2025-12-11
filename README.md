@@ -32,6 +32,7 @@ This lab focuses on:
 *  TypeScript Handbook — https://www.typescriptlang.org/docs
 *  React Hooks Guide — Official Documentation
 *  Local Storage in React - https://blog.logrocket.com/using-localstorage-react-hooks/
+*  Using uuidv4 - https://clerk.com/blog/generating-and-using-uuids-in-react 
 *  TypeScript + React Cheatsheets (recommended)
 
 

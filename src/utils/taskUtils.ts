@@ -17,3 +17,10 @@ export const saveTaskToLocalStorage = (task: TaskFormData) => {
     // return the updated array
     return updatedTasks;
 }
+
+export const loadTasksFromLocalStorage = () => {
+    // Get items from storage
+    const tasksJSON = localStorage.getItem("tasks");
+    // return the items or an empty array
+    return tasksJSON ? JSON.parse(tasksJSON) : [];
+}

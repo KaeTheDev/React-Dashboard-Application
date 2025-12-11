@@ -72,4 +72,3 @@ export const TaskForm: React.FC<TaskFormProps> = ({
 
 // COMPONENT NOTES
 // Implement initialData for edit
-// Need to add localStorage -- helper function
