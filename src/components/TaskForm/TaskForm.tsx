@@ -38,7 +38,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit(formData);
-    console.log(formData);
+    setFormData({ title: "", description: "", status: "pending", priority: "low", dueDate: ""})
   };
 
   return (
@@ -64,3 +64,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({
     </div>
   );
 };
+
+// COMPONENT NOTES
+// Implement initialData for edit
+// Need to add localStorage -- helper function

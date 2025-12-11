@@ -9,7 +9,6 @@ const handleTaskSubmit = (task: TaskFormData) => {
 
   return (
     <>
-   {/* <h2 className="text-3xl text-red-500">KaeTheDev is the GREATEST!</h2> */}
    <TaskForm onSubmit={handleTaskSubmit} />
     </>
   )
