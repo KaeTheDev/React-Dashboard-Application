@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { TaskForm } from "./components/TaskForm/TaskForm";
-import { TaskItem } from "./components/TaskList/TaskItem";
-import type { Task, TaskFormData } from "./types";
+import { TaskList } from "./components/TaskList/TaskList";
+import type { Task, TaskFormData, TaskStatus } from "./types";
 import { v4 as uuid } from "uuid";
 import { loadTasksFromLocalStorage } from "./utils/taskUtils";
+import { deleteTaskFromLocalStorage } from "./utils/taskUtils";
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -32,6 +33,20 @@ function App() {
 
   };
 
+  const handleStatusChange = (taskId: string, newStatus: TaskStatus) => {
+    setTasks(prev =>
+      prev.map(t => t.id === taskId ? { ...t, status: newStatus } : t)
+    );
+  };
+
+  const handleDelete = (taskId: string) => {
+   // Delete from localStorage first and get updated tasks
+   const updatedTasks = deleteTaskFromLocalStorage(taskId);
+
+   // Update React state
+   setTasks(updatedTasks);
+  };
+
   return (
     <>
      <div className="p-4 flex flex-col md:flex-row gap-4">
@@ -41,20 +56,12 @@ function App() {
     </div>
  
       <div className="md:w-2/2 flex flex-col gap-4">
-      {tasks.map((task) => (
-        <TaskItem
-          key={task.id}
-          task={task}
-          onStatusChange={(taskId, newStatus) => {
-            setTasks(prev =>
-              prev.map(t => t.id === taskId ? { ...t, status: newStatus } : t)
-              )
-          }}
-          onDelete={(taskId) => {
-            setTasks(prev => prev.filter(t => t.id !== taskId));
-          }}
-        />
-      ))}
+      <TaskList 
+      tasks={tasks}
+      onStatusChange={handleStatusChange}
+      onDelete={handleDelete}
+      />
+
       </div>
       </div>
     </>
