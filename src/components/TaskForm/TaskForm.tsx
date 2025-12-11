@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import type { TaskFormData, TaskFormProps } from "../../types";
+import type { TaskFormData, TaskFormProps, Task } from "../../types";
 import { saveTaskToLocalStorage } from "../../utils/taskUtils";
+import { v4 as uuid } from "uuid";
 
 export const TaskForm: React.FC<TaskFormProps> = ({
   onSubmit,
@@ -39,9 +40,14 @@ export const TaskForm: React.FC<TaskFormProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const updatedTasks = saveTaskToLocalStorage(formData);
+    const taskWithId: Task = {
+      ...formData,
+      id: uuid()
+    }
 
-    onSubmit(formData);
+    const updatedTasks = saveTaskToLocalStorage(taskWithId);
+
+    onSubmit(taskWithId);
     setFormData({ title: "", description: "", status: "pending", priority: "low", dueDate: ""});
     console.log("Task saved!", updatedTasks);
   };

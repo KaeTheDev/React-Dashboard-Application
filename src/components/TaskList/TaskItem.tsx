@@ -42,7 +42,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({
             <option value="completed">Completed</option>
         </select>
 
-        <button className="text-md text-red-600" onClick={() => onDelete(task.id)}></button>
+        <button className="text-md text-red-600" onClick={() => onDelete(task.id)}>Delete</button>
     </div>
     )
 }

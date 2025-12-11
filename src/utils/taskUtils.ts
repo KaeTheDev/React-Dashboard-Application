@@ -1,26 +1,44 @@
-import type { TaskFormData } from "../types";
+import type { Task } from "../types";
 
-// Adds a task to localStorage
-export const saveTaskToLocalStorage = (task: TaskFormData) => {
-    // 1. Get current tasks
+// Save ALL tasks
+export const saveTasksToLocalStorage = (tasks: Task[]) => {
+    // Convert the array of tasks into JSON and store it in localStorage
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+// Save ONE new task into localStorage
+export const saveTaskToLocalStorage = (task: Task) => {
+    // Get the existing tasks from localStorage (stored as a string)
     const tasksJSON = localStorage.getItem("tasks");
-    // Read the current tasks from localStorage (or use [] if none)
-    // Parse them into an array
-    const tasks: TaskFormData[] = tasksJSON ? JSON.parse(tasksJSON) : [];
+   // Convert the JSON string back into an array of tasks OR use an empty array
+    const tasks: Task[] = tasksJSON ? JSON.parse(tasksJSON) : [];
 
-    // 2. Add new task
+    // Create a new updated array containing old tasks + the new one
     const updatedTasks = [...tasks, task];
 
-    // 3. Save back to localStorage
+    // Save the updated array back into localStorage as a JSON string
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
 
-    // return the updated array
+     // Return the updated array so React can update state if needed
     return updatedTasks;
 }
 
-export const loadTasksFromLocalStorage = () => {
+// Reads tasks from localStorage
+export const loadTasksFromLocalStorage = (): Task[] => {
     // Get items from storage
     const tasksJSON = localStorage.getItem("tasks");
     // return the items or an empty array
     return tasksJSON ? JSON.parse(tasksJSON) : [];
+}
+
+// Delete a task by ID from localStorage
+export const deleteTaskFromLocalStorage = (taskId: string) => {
+    // loads tasks from storage and stores them in tasks variable
+    const tasks: Task[] = loadTasksFromLocalStorage();
+    // filter tasks and checks if its the task id that is deleted
+    const updatedTasks = tasks.filter((task => task.id !== taskId));
+    // update the tasks with the saveTasksToLocalStorage function
+    saveTasksToLocalStorage(updatedTasks);
+    // return updated tasks
+    return updatedTasks;
 }
