@@ -55,7 +55,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({
   return (
     <div className="h-screen flex justify-center items-center">
     <form onSubmit={handleSubmit} className="flex flex-col w-200 border border-solid px-4 py-4">
-    <h1 className="flex justify-center text-4xl mb-3">React Task Dashboard</h1>
+    <h1 className="flex justify-center text-4xl mb-3">React Task Form</h1>
         <input name="title" value={formData.title} onChange={handleChange} placeholder="Title" className="px-2 py-4 border border-solid mb-3"/>
         <textarea name="description" value={formData.description} onChange={handleChange} placeholder="Task Description" className="px-2 py-4 border border-solid mb-3" />
         <select name="status" value={formData.status} onChange={handleChange} className="px-2 py-4 border border-solid mb-3">
