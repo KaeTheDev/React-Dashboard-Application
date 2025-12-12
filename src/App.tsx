@@ -15,7 +15,6 @@ function App() {
     priority?: "low" | "medium" | "high";
   }>({});
 
-
   // Load saved tasks when the page loads
   useEffect(() => {
     const saved = loadTasksFromLocalStorage();
@@ -52,9 +51,9 @@ function App() {
     // Update React state
     setTasks(updatedTasks);
   };
-  
+
   // Filter Task before passing to TaskList
-  const filteredTasks = tasks.filter(task => {
+  const filteredTasks = tasks.filter((task) => {
     let matches = true;
 
     if (filters.status) {
@@ -68,25 +67,27 @@ function App() {
   });
 
   return (
-    <Dashboard>
-      <div className="md:w-1/2">
-        <TaskForm onSubmit={handleTaskSubmit} />
-      </div>
+    <>
+      <h1 className="flex justify-center text-4xl mb-3">React Task Dashboard</h1>
+      <Dashboard>
+        <div className="md:w-1/2">
+          <TaskForm onSubmit={handleTaskSubmit} />
+        </div>
 
-      <div className="md:w-1/2 flex flex-col gap-4">
-      <TaskFilter
-        onFilterChange={(newFilters) =>
-          setFilters((prev) => ({ ...prev, ...newFilters }))
-        }
-      />
-        <TaskList
-          tasks={filteredTasks}
-          onStatusChange={handleStatusChange}
-          onDelete={handleDelete}
-        
-        />
-      </div>
-    </Dashboard>
+        <div className="md:w-1/2 flex flex-col gap-4">
+          <TaskFilter
+            onFilterChange={(newFilters) =>
+              setFilters((prev) => ({ ...prev, ...newFilters }))
+            }
+          />
+          <TaskList
+            tasks={filteredTasks}
+            onStatusChange={handleStatusChange}
+            onDelete={handleDelete}
+          />
+        </div>
+      </Dashboard>
+    </>
   );
 }
 

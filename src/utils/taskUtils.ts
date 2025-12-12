@@ -42,3 +42,18 @@ export const deleteTaskFromLocalStorage = (taskId: string) => {
     // return updated tasks
     return updatedTasks;
 }
+
+// Update a task by ID in localStorage
+export const updateTaskInLocalStorage = (updatedTask: Task) => {
+    // Load all existing tasks
+    const tasks: Task[] = loadTasksFromLocalStorage();
+
+    // Map through tasks and replace the one that matches the ID
+    const newTaskList = tasks.map(task => task.id === updatedTask.id ? updatedTask : task);
+
+    // Save updated list
+    saveTasksToLocalStorage(newTaskList);
+
+    // Return new list so React can update state
+    return newTaskList;
+}
