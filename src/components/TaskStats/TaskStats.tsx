@@ -1,5 +1,5 @@
 import React from "react";
-import type { Task, TaskStatus, TaskPriority, TaskStatsProps } from "../../types";
+import type { TaskStatus, TaskPriority, TaskStatsProps } from "../../types";
 
 export const TaskStats: React.FC<TaskStatsProps> = ({ tasks }) => {
     const total = tasks.length;
