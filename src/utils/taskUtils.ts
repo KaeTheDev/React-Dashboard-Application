@@ -1,4 +1,5 @@
 import type { Task } from "../types";
+import type { TaskFormData } from "../types";
 
 // Save ALL tasks
 export const saveTasksToLocalStorage = (tasks: Task[]) => {
@@ -57,3 +58,15 @@ export const updateTaskInLocalStorage = (updatedTask: Task) => {
     // Return new list so React can update state
     return newTaskList;
 }
+
+export const validateTaskForm = (data: TaskFormData): { valid: boolean; errors: string[] } => {
+    const errors: string[] = [];
+  
+    if (!data.title.trim()) errors.push("Title is required.");
+    if (!data.description.trim()) errors.push("Description is required.");
+    if (!data.dueDate.trim()) errors.push("Due date is required.");
+  
+    // optional: add more validation rules, e.g., title length, date format, etc.
+  
+    return { valid: errors.length === 0, errors };
+  };
