@@ -5,7 +5,8 @@ import { TaskItem } from "./TaskItem";
 export const TaskList: React.FC<TaskListProps> = ({
     tasks,
     onStatusChange,
-    onDelete
+    onDelete,
+    onEdit
 }) => {
     return (
         <div className="flex flex-col gap-4">
@@ -15,6 +16,7 @@ export const TaskList: React.FC<TaskListProps> = ({
                 task={task}
                 onStatusChange={onStatusChange}
                 onDelete={onDelete}
+                onEdit={onEdit}
                 />
             ))}
         </div>

@@ -21,6 +21,7 @@ export interface TaskListProps {
     tasks: Task[];
     onStatusChange: (taskId: string, newStatus: TaskStatus) => void;
     onDelete: (taskId: string) => void;
+    onEdit: (task: Task) => void; 
 }
 
 export interface TaskFormData {
@@ -29,12 +30,12 @@ export interface TaskFormData {
     status: TaskStatus;
     priority: TaskPriority;
     dueDate: string;
-}
+  }
 
-export interface TaskFormProps {
-    onSubmit: (task: TaskFormData) => void;
-    initialData?: TaskFormData;
-}
+  export interface TaskFormProps {
+    onSubmit: (task: Task) => void;   
+    initialData?: Task;              
+  }
 
 export interface DashboardProps {
     children: React.ReactNode;
