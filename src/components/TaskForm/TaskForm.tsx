@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import type { TaskFormProps, TaskFormData, Task } from "../../types";
 import { v4 as uuid } from "uuid";
-import { saveTaskToLocalStorage, updateTaskInLocalStorage } from "../../utils/taskUtils";
+import { saveTaskToLocalStorage, updateTaskInLocalStorage, validateTaskForm } from "../../utils/taskUtils";
 
 export const TaskForm: React.FC<TaskFormProps> = ({ onSubmit, initialData }) => {
   const [formData, setFormData] = useState<TaskFormData>({
@@ -32,7 +32,14 @@ export const TaskForm: React.FC<TaskFormProps> = ({ onSubmit, initialData }) => 
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
+  
+    // Validate form
+    const { valid, errors } = validateTaskForm(formData);
+    if (!valid) {
+      alert(errors.join("\n")); // simple alert for now
+      return;
+    }
+  
     let task: Task;
     if (initialData) {
       // EDIT
@@ -43,15 +50,15 @@ export const TaskForm: React.FC<TaskFormProps> = ({ onSubmit, initialData }) => 
       task = { ...formData, id: uuid() };
       saveTaskToLocalStorage(task);
     }
-
+  
     onSubmit(task);
-
+  
     // Reset form only for create mode
     if (!initialData) {
       setFormData({ title: "", description: "", status: "pending", priority: "low", dueDate: "" });
     }
   };
-
+  
   return (
     <form onSubmit={handleSubmit} className="flex flex-col w-full max-w-md border px-4 py-4 mx-auto">
       <h1 className="text-2xl mb-3">{initialData ? "Edit Task" : "New Task"}</h1>
