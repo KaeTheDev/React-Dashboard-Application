@@ -38,3 +38,10 @@ export interface TaskFormProps {
 export interface DashboardProps {
     children: React.ReactNode;
 }
+
+export interface TaskFilterProps {
+    onFilterChange: (filters: {
+        status?: TaskStatus;
+        priority?: 'low' | 'medium' | 'high';
+    }) => void;
+}
