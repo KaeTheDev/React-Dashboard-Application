@@ -101,3 +101,17 @@ task-dashboard/
 *  utils / - Contains helper functions like task filtering, sorting, validation, and date formatting.
 
 ## Reflection
+In this project, I implemented React and TypeScript by defining interfaces for my data structures and component props. This ensured strong type safety across the application and made passing props between components more predictable. Every component that consumed data or functions from a parent received correctly typed props, which helped prevent runtime errors and made the development process more structured.
+
+I encountered several challenges along the way. Early on, I realized that React might be overkill for a project like this. Managing state and props, especially when introducing TypeScript, became complex and sometimes convoluted. Compared to a similar project implemented in vanilla JavaScript, the React/TypeScript version required more planning and boilerplate, which slowed down the workflow. As a result, some features—like animations and light/dark mode—were not completed. I plan to revisit this project once I feel more confident with React fundamentals.
+
+For component composition and state management, I approached the project by building each component separately. I then structured them hierarchically:
+
+TaskItem is a child of TaskList
+TaskFilter is a sibling of TaskList
+TaskForm, TaskFilter, and TaskList are children of Dashboard
+Dashboard itself is a child of App
+
+I mapped out these relationships using pen and paper before implementing them, which helped me keep track of data flow and component interactions. State was primarily managed in App to keep a single source of truth, while props and callback functions were used to allow children components to update the state.
+
+Overall, this project reinforced the importance of planning component hierarchy, thinking about state ownership, and understanding TypeScript’s type-checking benefits and constraints in a React environment. Also, knowing when and when not to use React. I understand that argument a lot more. 
