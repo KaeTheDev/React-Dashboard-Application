@@ -5,6 +5,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({
   task,
   onStatusChange,
   onDelete,
+  onEdit
 }) => {
   const getPriorityColor = (priority: string) => {
     switch (priority) {
@@ -44,11 +45,18 @@ export const TaskItem: React.FC<TaskItemProps> = ({
       </select>
 
       <button
-        className="text-md text-red-600"
+        className="text-md text-red-600 hover:text-red-900"
         onClick={() => onDelete(task.id)}
       >
         Delete
       </button>
+      <button
+  className="text-md text-blue-500 ml-2 hover:text-blue-900"
+  onClick={() => onEdit(task)}
+>
+  Edit
+</button>
+
     </div>
   );
 };
