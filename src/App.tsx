@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { TaskForm } from "./components/TaskForm/TaskForm";
 import { TaskList } from "./components/TaskList/TaskList";
+import { Dashboard } from "./components/Dashboard/Dashboard";
 import type { Task, TaskFormData, TaskStatus } from "./types";
 import { v4 as uuid } from "uuid";
 import { loadTasksFromLocalStorage } from "./utils/taskUtils";
@@ -48,23 +49,19 @@ function App() {
   };
 
   return (
-    <>
-     <div className="p-4 flex flex-col md:flex-row gap-4">
-    
+   <Dashboard>
     <div className="md:w-1/2">
-    <TaskForm onSubmit={handleTaskSubmit} />
+    <TaskForm onSubmit={handleTaskSubmit}/>
     </div>
- 
-      <div className="md:w-2/2 flex flex-col gap-4">
-      <TaskList 
-      tasks={tasks}
-      onStatusChange={handleStatusChange}
-      onDelete={handleDelete}
-      />
 
-      </div>
-      </div>
-    </>
+    <div className="md:w-1/2 flex flex-col gap-4">
+    <TaskList 
+    tasks={tasks}
+    onStatusChange={handleStatusChange}
+    onDelete={handleDelete}
+    />
+    </div>
+   </Dashboard>
   );
 }
 

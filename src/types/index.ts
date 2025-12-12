@@ -34,3 +34,7 @@ export interface TaskFormProps {
     onSubmit: (task: TaskFormData) => void;
     initialData?: TaskFormData;
 }
+
+export interface DashboardProps {
+    children: React.ReactNode;
+}
